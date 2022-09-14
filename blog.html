@@ -6,42 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog section</title>
-    <style>
-        body {
-            background-image: url("./bg.png");
-            background-size: cover;
-            background-position: left top;
-            font-family: "Zilla Slab", serif;
-            
-        }
 
-        h1 {
-            text-align: center;
-            color: aliceblue;
-            font-size: 3rem;
-            border: 2px solid #9dffad;
-            border-radius: 15px;
-            display: block;
-            width: 25%;
-            margin: 20px auto;
-            padding: 7px;
-        }
-        h2{
-            
-        }
-    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="blog.css">
 </head>
 
 <body>
     <h1>Blog</h1>
     <main>
-      <div>
-        <h2>What is the difference between local storage and session storage?</h2>
+      <div class="card">
+        <h2>Q1: What is the difference between local storage and session storage?</h2>
+        <p><span>Answer:</span><br> sessionStorage is similar to localStorage ; the difference is that while data in localStorage doesn't expire, data in sessionStorage is cleared when the page session ends. Whenever a document is loaded in a particular tab in the browser, a unique page session gets created and assigned to that particular tab.
+        localstorge is still there but the session storage data will not . untill you manually clear or delete the local storage data it will remain there as it was.</p>
+      </div>
+      <div class="card">
+        <h2>Q2: What is the difference between global scope and local scope in javascript?</h2>
+        <p><span>Answer:</span><br> JavaScript variables have only two scopes. Global Variables − A global variable has a global scope which means it can be defined anywhere in your JavaScript code. Local Variables − A local variable will be visible only within a function where it is defined. Function parameters are always local to that function.
+        Like when we are declear a variable in a function then the variable is useable under the function scope whice is a local scope variable.A global variable exists only once in a script, and is visible in every function/p>
+      </div>
+      <div class="card">
+        <h2>Q3: How does javascript event loop works?</h2>
+        <p><span>Answer:</span><br>The event loop is a mechanism that allows JavaScript to perform non-blocking operations. When an asynchronous task is started, the event loop will start running. Once the task is completed, the event loop will again check for any other tasks that need to be performed.</p>
+      </div>
+      <div class="card">
+        <h2>Q4: What is the difference between local storage and session storage?</h2>
+        <p><span>Answer:</span><br>1. Variable that is not initialized will give undefiend.<br>2. when you call a non-existent property or method of an object.<br>3. Parameter that is not passed yet will give undefiend.<br>4. Function which is not returning something will give undefiend.<br>5. If return has nothing with its right side will give undefiend.</p>
       </div>
     </main>
+    <footer>
+        <p id="copyright">Copyright © 2022 - All right reserved by mahfuzur rahman 7thSite</p>
+    </footer>
 </body>
 
 </html>
