@@ -46,6 +46,8 @@ const typeController = (e) => {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++
+    console.log(errorCount)
   }
 
   // check if given question text is equal to user typed text
@@ -105,13 +107,14 @@ const start = () => {
   if (startTime) return;
 
   let count = 3;
+  countdownOverlay.innerHTML= '';
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
 
     // finished timer
-    if (count == 0) {
+    if (count == -1) {
       countdownOverlay.style.display = "none";
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
@@ -134,7 +137,7 @@ displayHistory();
 // Show typing time spent
 setInterval(() => {
   const currentTime = new Date().getTime();
-  const timeSpent = (currentTime - startTime) / 1000;
+  const timeSpent = Math.round((currentTime - startTime) / 1000);
 
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
