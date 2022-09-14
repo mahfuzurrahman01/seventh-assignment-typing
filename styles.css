@@ -45,6 +45,7 @@ body {
   background-color: #171717;
   border: 2px solid #9dffad;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 #countdown {
@@ -142,9 +143,12 @@ button {
 }
 
 #histories {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-around; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
 }
 
 .card {
@@ -152,9 +156,11 @@ button {
   height: 100%;
   padding: 50px;
   display: flex;
+  text-align: center;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 10px 30px;
   color: white;
   border-radius: 15px;
   background: rgb(255, 255, 255);
@@ -187,6 +193,24 @@ button {
     width: 100%;
   }
   .card {
-    flex-direction: column;
+    flex-direction:column;
+  }
+  #histories {
+  grid-template-columns: repeat(1,1fr);
+  }
+  #result{
+    position: fixed;
+    width: 300px;
+    height: 250px;
+  }
+  button{
+    width: 235px;
+  }
+}
+/* tablet responsive  */
+
+@media only screen and (min-width: 701px) and (max-width: 998px){
+  #histories{
+    grid-template-columns: repeat(2,1fr);
   }
 }
