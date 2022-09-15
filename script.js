@@ -17,8 +17,8 @@ fetch("./texts.json")
   .then((data) => {
     questionText = data[Math.floor(Math.random() * data.length)];
     question.innerHTML = questionText;
-  });
 
+  });
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
@@ -68,7 +68,13 @@ const gameOver = () => {
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
-  const timeTaken = (finishTime - startTime) / 1000;
+  const timeTaken = Math.round((finishTime - startTime) / 1000);
+  // let get the question text field length for counting the WPM 
+  const totalWordCount = (question.innerText.length) / 5;
+
+  //lets get the wpm (calculation)
+  const secConvertMinute = (timeTaken / 60).toFixed(2);
+  const Wpm = Math.round(totalWordCount / secConvertMinute);
 
   // show result modal
   resultModal.innerHTML = "";
@@ -83,10 +89,11 @@ const gameOver = () => {
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
-    <button onclick="closeModal()">Close</button>
+    <p>Typing speed <span class="bold red">${Wpm}</span></p>
+    <button onclick="closeModal()" style="margin-top:20px;">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeTaken, errorCount, Wpm);
 
   // restart everything
   startTime = null;
@@ -105,7 +112,7 @@ const start = () => {
   if (startTime) return;
 
   let count = 3;
-  countdownOverlay.innerHTML= '';
+  countdownOverlay.innerHTML = '';
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
